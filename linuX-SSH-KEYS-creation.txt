@@ -1,0 +1,26 @@
+   -- ON CLIIENT MACHINE--
+ssh-keygen -t rsa -b 4096
+--press enter to accept the default 
+--enter a passphrase (public password others can use)
+--THE KEYS WILL BE GENERATED, check with " cd .ssh/" then "ls"
+
+-- ON MASTERS NODE--
+sudo apt install openssh-server
+sudo systemctl start sshd
+
+
+--ON CLIENT NODE --
+scp id_rsa.pub (mastervmname@ip_address/any_directory_on_mastersvm)
+--enter password --
+
+
+-- ON MASTER--
+-- check if it has been sent by "ls"
+mkdir .ssh 
+cat id_rsa.pub >> .ssh/authorized_keys
+
+--ON CLIENT--
+ssh mastervmname@ip_address
+--enter password
+-- to cancell ssh connection type "exit"
+

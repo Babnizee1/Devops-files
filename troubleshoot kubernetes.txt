@@ -1,0 +1,2 @@
+kubectl logs 
+kubectl describe pod 

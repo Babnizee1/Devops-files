@@ -1,0 +1,1 @@
+scp -r music(folder-we're copying from) veem1@40.122.26.208(vmname and ip address):/var/www/html/(folder we're copying to)

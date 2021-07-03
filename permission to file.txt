@@ -1,0 +1,2 @@
+cd into the name of the file 
+sudo chmod 667 (filename )

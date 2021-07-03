@@ -1,0 +1,1 @@
+curl -X POST  -u niyi:1137367d4032b48609f638f60320237b9c http://localhost:8080//job/good/config.xml" -d "@config.xml"

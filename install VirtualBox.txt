@@ -1,0 +1,11 @@
+download ubuntu iso file
+download virtualbox
+--- install  GCC PERL PACKAGES MODULES
+sudo apt install virtualbox-guest-utils virtualbox-guest-dkms
+
+---install virtualbox by going to terminal and cd into where virtualbox is downloaded 
+sudo dpkg -i virt (AND PRESS TAB KEY TO COMPLETE IT )
+sudo apt-get -f install 
+sudo /sbin/vboxconfig
+
+---open virtualbox and install the iso file

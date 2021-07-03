@@ -1,0 +1,1 @@
+ register-azurermresourceprovider -providernamespace microsoft.policyinsight

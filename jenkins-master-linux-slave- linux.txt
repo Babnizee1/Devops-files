@@ -1,0 +1,30 @@
+--FULL DETAILS HERE  https://github.com/miztiik/DevOps-Demos
+
+--- IF NEEDED , install ssh slave plugin or see if its installed
+
+--install java on both master and slave 
+sudo apt-get install default-jdk -y
+
+-- GO TO SLAVE--
+--use current user or create a user if needed and add it to wheel group
+-- create ssh keys 
+ssh-keygen -t rsa -N "" -f /home/user-you-created-like-veem2/.ssh/id_rsa
+
+cd .ssh
+cat id_rsa.pub > authorized_keys
+
+chmod 700 authorized_keys
+
+ --GO TO MASTER --
+
+sudo chmod 777 jenkins 
+mkdir -p /var/lib/jenkins/.ssh
+cd /var/lib/jenkins/.ssh
+ssh-keyscan -H SLAVE-IP-ADDRESS >>/var/lib/jenkins/.ssh/known_hosts
+sudo chown jenkins:jenkins known_hosts
+sudo chmod 700 known_hosts
+
+-- go to slave
+--get the private keys
+cd .ssh
+cat id_rsa 

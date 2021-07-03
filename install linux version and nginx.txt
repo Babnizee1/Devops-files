@@ -1,0 +1,5 @@
+sudo apt-get install docker-ce=18.03.1~ce~3-0~ubuntu 
+
+run the nginx container 
+
+sudo docker run -it --rm -p 80:80 --name niyi nginx

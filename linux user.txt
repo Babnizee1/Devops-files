@@ -1,0 +1,5 @@
+sudo usermod -aG docker ${USER}
+  
+  THEN TYPE 
+
+su - ${USER}

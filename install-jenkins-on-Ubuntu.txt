@@ -1,0 +1,16 @@
+sudo apt update
+sudo apt search jdk
+sudo apt install openjdk-8-jre
+sudo apt install openjdk-8-jre-headless
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add - 
+ sudo nano /etc/apt/sources.list
+  SCROLL DOWN DOWN AND PASTE 
+deb https://pkg.jenkins.io/debian-stable binary/
+   TYPE CONTROL X TO EXIT ANDPRESS ENTER KEY 
+sudo apt update
+sudo apt install jenkins
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+ip address 
+ GOOGLE "localhost:8080" AND TYPE
+sudo cat [the password] 
