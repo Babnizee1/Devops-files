@@ -1,12 +1,19 @@
 --FULL DETAILS HERE  https://github.com/miztiik/DevOps-Demos
+--AND THIS LINK TO SOLVE ERROR  https://stackoverflow.com/questions/41734737/why-jenkins-says-server-rejected-the-1-private-keys-while-launching-the-agen 
 
 --- IF NEEDED , install ssh slave plugin or see if its installed
 
 --install java on both master and slave 
 sudo apt-get install default-jdk -y
 
+ 
 -- GO TO SLAVE--
---use current user or create a user if needed and add it to wheel group
+
+-- JENKINS USER MUST BE CREATED ON BOTH MASTER AND SLAVE 
+sudo useradd jenkins
+passwd jenkins AND ENTER A PASSWORD
+vim /etc/sudoers AND WRITE jenkins AS ROOT USER
+
 -- create ssh keys 
 ssh-keygen -t rsa -N "" -f /home/user-you-created-like-veem2/.ssh/id_rsa
 
@@ -15,7 +22,9 @@ cat id_rsa.pub > authorized_keys
 
 chmod 700 authorized_keys
 
- --GO TO MASTER --
+--- MAKE SURE ALL SSH KEY IS COPIED TO  /var/lib/jenkins/.ssh TO AVOID ERROS AND MAKE jenkins (jenkins user) THE OWNER OF THESE DIRECTORIES ( var, /var/lib/jenkins, /var/lib/jenkins/.ssh) AND GIVE jenkins APPROPRIATE  PERMISSIONS
+
+ -----GO TO MASTER -----
 
 sudo chmod 777 jenkins 
 mkdir -p /var/lib/jenkins/.ssh
@@ -28,3 +37,17 @@ sudo chmod 700 known_hosts
 --get the private keys
 cd .ssh
 cat id_rsa 
+
+-- GO TO SLAVE 
+mkdir /var/lib/jenkins/.ssh
+cd .ssh
+sudo copy authorized_keys  id_rsa  id_rsa.pub  known_hosts /var/lib/jenkins/.ssh
+cd ..
+sudo chown jenkins:jenkins var 
+sudo chmod 770 var 
+cd /var/lib
+sudo chown jenkins:jenkins jenkins 
+sudo chmod 770 jenkins 
+cd /var/lib/jenkins
+sudo chown jenkins:jenkins .ssh 
+sudo chmod 770 .ssh
