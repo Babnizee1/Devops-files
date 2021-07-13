@@ -1,0 +1,20 @@
+--LINK IS https://medium.com/@gustavo.guss/jenkins-archive-artifact-save-file-in-pipeline-ac6d8b569c2c
+
+-- file extensions are jar/html/js
+--To save a single file named ‘teste.js’
+   archiveArtifacts artifacts: 'teste.js'
+
+--To save multiple files
+  archiveArtifacts artifacts: '*.js'
+
+--To save multiple files from a specific folder
+  archiveArtifacts artifacts: 'build/*.js'
+
+--You can save only if is a successful build
+  archiveArtifacts artifacts: 'teste.js', onlyIfSuccessful: true
+
+--This is very useful to save files if you know the name of files, but your files are spreaded in different folders.
+ex: you need save the files:
+js/build.min.js
+css/build.min.js use;
+   archiveArtifacts artifacts: '**/*.min.*'
