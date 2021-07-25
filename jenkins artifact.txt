@@ -5,7 +5,8 @@
    archiveArtifacts artifacts: 'teste.js'
 
 --To save multiple files
-  archiveArtifacts artifacts: '*.js'
+  archiveArtifacts artifacts:  '**/*.ja, *.js'
+  or 'target/*.jar, '
 
 --To save multiple files from a specific folder
   archiveArtifacts artifacts: 'build/*.js'
