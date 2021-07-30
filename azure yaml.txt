@@ -17,3 +17,40 @@ stages:
   - job: Deploy
     steps:
     - script: echo Deploying the code!
+
+- stage: deploydev
+  jobs:
+    # Track deployments on the environment.
+  - deployment: DeployWeb
+    displayName: deploy Web App
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    # Creates an environment if it doesn't exist.
+    environment: 'smarthotel-dev'
+    strategy: 
+       runOnce:
+        preDeploy:        
+          pool:  # See pool schema.        
+          steps:
+          - script: 
+        deploy:          
+          pool:  # See pool schema.        
+          steps:
+          - script:
+        routeTraffic:         
+          pool:          
+          steps:
+          - script:     
+        postRouteTraffic:          
+          pool:        
+          steps:
+          - script:
+        on:
+          failure:         
+            pool:          
+            steps:
+            - script:
+          success:          
+            pool:           
+            steps:
+            - script:
