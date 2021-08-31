@@ -36,6 +36,7 @@ stages:
         deploy:          
           pool:  # See pool schema.        
           steps:
+          - checkout: self
           - script:
         routeTraffic:         
           pool:          

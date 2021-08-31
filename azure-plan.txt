@@ -1,0 +1,5 @@
+ "plan": {
+                "name": "pro-18_04-lts-gen2",
+                "product": "0001-com-ubuntu-pro-bionic",
+                "publisher": "canonical"
+            },
